@@ -42,10 +42,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Hey.')),
+        title: const  Center(child: Text('Hey.')),
         centerTitle: true,
         backgroundColor: Colors.amber,
-      ),
+      ), 
       body: Center(
         child: ElevatedButton(
           onPressed: () {
