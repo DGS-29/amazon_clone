@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:amazon_clone/constants/error_handling.dart';
-import 'package:amazon_clone/constants/utils.dart';
 import 'package:amazon_clone/features/home/screens/home_screen.dart';
+import 'package:amazon_clone/constants/error_handling.dart';
+import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/constants/utils.dart';
 import 'package:amazon_clone/models/user.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -42,7 +42,6 @@ class AuthService{
         );
       },
       );
-    // ignore: empty_catches
     } catch (e) {
       // ignore: use_build_context_synchronously
       showSnackBar(context, e.toString());
@@ -64,12 +63,10 @@ class AuthService{
         'Content-Type': 'application/json; charset=UTF-8',
       }
        );
-
       // ignore: avoid_print
-      print(res.body);
-
-      // ignore: use_build_context_synchronously
-      httpErrorHandle(response: res, context: context, onSuccess: () async{
+      print('Response: ${res.body}');
+        // ignore: use_build_context_synchronously
+        httpErrorHandle(response: res, context: context, onSuccess: () async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         // ignore: use_build_context_synchronously
         Provider.of<UserProvider>(context, listen: false).setUser(res.body);
@@ -78,7 +75,6 @@ class AuthService{
         Navigator.pushAndRemoveUntil(context, HomeScreen.routeName as Route<Object?>, (route) => false,);
       },
       );
-    // ignore: empty_catches
     } catch (e) {
       // ignore: use_build_context_synchronously
       showSnackBar(context, e.toString());
