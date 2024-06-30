@@ -34,11 +34,11 @@ class AuthService{
       body: user.toJson(),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
-      }
+      },
        );
       // ignore: use_build_context_synchronously
       httpErrorHandle(response: res, context: context, onSuccess: (){
-        showSnackBar(context, 'Accont created! Login with the same credentials!',
+        showSnackBar(context, 'Account created! Login with the same credentials!',
         );
       },
       );
@@ -63,20 +63,19 @@ class AuthService{
         'Content-Type': 'application/json; charset=UTF-8',
       }
        );
-      // ignore: avoid_print
+
       print('Response: ${res.body}');
-        // ignore: use_build_context_synchronously
         httpErrorHandle(response: res, context: context, onSuccess: () async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        // ignore: use_build_context_synchronously
+
         Provider.of<UserProvider>(context, listen: false).setUser(res.body);
         await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
-        // ignore: use_build_context_synchronously
+
         Navigator.pushAndRemoveUntil(context, HomeScreen.routeName as Route<Object?>, (route) => false,);
       },
       );
     } catch (e) {
-      // ignore: use_build_context_synchronously
+
       showSnackBar(context, e.toString());
     }
   }
