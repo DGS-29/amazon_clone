@@ -7,7 +7,7 @@ const authRouter = require("./routes/auth")
 
 const PORT = 3000;
 const app = express();
-const DB ="mongodb+srv://deepak:Ac123@cluster0.aaibrdc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const DB ="mongodb+srv://deepakgs:deepak123@cluster0.cnoalui.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 //middleware
 //Client -> middleware -> SERVER -> CLient
