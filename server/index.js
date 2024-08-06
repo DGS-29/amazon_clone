@@ -1,29 +1,36 @@
-//Imports FRom packages
+//IMPORT PACKAGES
 const express = require('express');
 const mongoose = require('mongoose');
-//Imports FRom other files
-const authRouter = require("./routes/auth")
-//import './features/auth/screens/auth_screen.dart' 
 
+//IMPORT FROM FILES
+const authRouter= require('./routes/auth');
+const adminRouter = require('./routes/admin');
+const productRouter = require('./routes/product');
+const userRouter = require('./routes/user');
+
+//INITIALIZATION
 const PORT = 3000;
-const app = express();
-const DB ="MONGO_URI";
+const api = express();
+const password = encodeURIComponent("<YOUR PASSWORD>");
+const connectDB = "mongodb+srv://deepakgs:deepak123@cluster0.cnoalui.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 //middleware
-//Client -> middleware -> SERVER -> CLient
-app.use(express.json());
-app.use(authRouter);
+api.use(express.json());
+api.use(authRouter);
+api.use(adminRouter);
+api.use(productRouter);
+api.use(userRouter);
 
-//connections
-mongoose
-    .connect(DB)
-    .then( () => {
-    console.log("Connection Successful");    
-    })
-    .catch((e) => {
-        console.log(e);
-    });
-
-app.listen(PORT, () => {
-    console.log(`connected at port ${PORT}`); 
+//Connections
+mongoose.connect(connectDB).then(() =>{ 
+    //this is a promise object..similar to future in dart
+    console.log("Connection successful");
+}).catch((e) => {
+    console.log("Error: ", e);
 });
+
+//Listen
+api.listen(PORT, "0.0.0.0", () => {
+    console.log("hello");
+    console.log(`listening to ${PORT}`);
+})

@@ -38,6 +38,15 @@ dependencies:
   http: ^1.2.1
   shared_preferences: ^2.2.3
   provider: ^6.1.2
+  badges: ^3.1.2
+  flutter_rating_bar: ^4.0.1
+  file_picker: ^8.0.0+1
+  pay: ^2.0.0
+  carousel_slider: ^4.2.1
+  community_charts_flutter: ^1.0.4
+  cloudinary_public: ^0.23.1
+  dotted_border: ^2.1.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
